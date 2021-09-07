@@ -1,0 +1,15 @@
+title: /echo
+plugins:
+  plugin: plugin.so
+steps:
+- title: POST /echo
+  protocol: http
+  request:
+    method: POST
+    url: "{{env.TEST_ADDR}}/echo"
+    body:
+      message: "hello"
+  expect:
+    code: 200
+    body:
+      message: "{{request.message}}"
